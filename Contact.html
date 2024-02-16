@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EventFest - Home of Local Events</title>
+
+    <!-- Mainlogo -->
+    <link rel="shortcut icon" href="AppIcon.ico" type="image/x-icon" />
+    <!--jquery-->
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!--jquery mobile-->
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <!--jquery mobile styles-->
+    <link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.css">
+    <!--jquery validation-->
+    <script src="js/lib/jquery.validate.js"></script>
+    <!--our stuff-->
+    <!-- <script src="js/facade.js"></script> -->
+    <script src="js/Database.js"></script>
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/events.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="logo.png" width="60px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Events.html">Events</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="Register.html">Account</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+
+    <div class="forms-container" data-role="content">
+        <div id="content-wrap">
+            <h2 class="request">Submit Your Event Request</h2>
+            <form class="form1" id="event-form" action="#" method="post" novalidate>
+                <div class="input-group">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" name="first-name" id="first-name" value="" required data-role="none">
+                    <span class="error-message"></span>
+                </div>
+                <div class="input-group">
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" name="last-name" id="last-name" value="" required data-role="none">
+                    <span class="error-message"></span>
+                </div>
+                <div class="input-group">
+                    <label for="phone">Phone (Format: 111-111-1111):</label>
+                    <input type="tel" name="phone" id="phone" value="" pattern="^\d{3}-\d{3}-\d{4}$" required
+                        data-role="none">
+                    <span class="error-message">Format: 111-111-1111</span>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email (Must be a @gmail.com address):</label>
+                    <input type="email" name="email" id="email" value="" pattern=".+@gmail\.com$" required
+                        data-role="none">
+                    <span class="error-message">Must be a @gmail.com address</span>
+                </div>
+                <div class="input-group">
+                    <label for="guests">Estimated Guests (Numbers only):</label>
+                    <input type="number" name="guests" id="guests" value="" required data-role="none">
+                    <span class="error-message">Numbers only</span>
+                </div>
+                <div class="input-group" style="flex-basis: 100%;">
+                    <label for="event-details">Tell Us More About Your Event:</label>
+                    <textarea name="event-details" id="event-details" required data-role="none"></textarea>
+                    <span class="error-message"></span>
+                </div>
+                <input class="btn2" type="submit" value="Submit" id="submitBtn" data-role="button">
+                <span class="error-message" id="general-error"></span>
+            </form>
+        </div>
+    </div>
+
+    <footer class="contact-footer">
+        <p>Developed By EventFest © | All Rights Reserved!</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('event-form').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                //If user click on Submit without filling all the fields then an alert will appear 
+                var firstName = document.getElementById('first-name').value.trim();
+                var lastName = document.getElementById('last-name').value.trim();
+                var phone = document.getElementById('phone').value.trim();
+                var email = document.getElementById('email').value.trim();
+                var guests = document.getElementById('guests').value.trim();
+                var eventDetails = document.getElementById('event-details').value.trim();
+
+                // Check if all fields are filled out
+                if (!firstName || !lastName || !phone || !email || !guests || !eventDetails) {
+                    alert('Kindly fill all the information.');
+                } else {
+                    // Check if the phone and email fields are valid
+                    var phonePattern = /^\d{3}-\d{3}-\d{4}$/; //Phone number validation
+                    var emailPattern = /.+@gmail\.com$/; //email validation
+
+                    if (!phonePattern.test(phone)) {
+                        alert('Please enter a valid phone number in the format: 111-111-1111.'); //Phone number doesn't matches the formmat
+                    } else if (!emailPattern.test(email)) {
+                        alert('Please enter a valid Email address.'); //If email doesn't matches the format - alert will appear
+                    } else {
+                        // If all validations passes then:
+                        addBookingData(firstName,lastName,phone,email,guests,eventDetails);
+                        alert('Thank you for registering for the event. We will contact you shortly!'); //alert will appear
+                        window.location.href = "about.html"
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

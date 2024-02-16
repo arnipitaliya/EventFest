@@ -1,0 +1,127 @@
+ .about-section {
+    height: 100%;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+} 
+
+.content {
+    height: 601px;
+    max-width: 1600px;
+    background-color: wheat;
+    padding: 40px;
+    color: black;
+    
+    padding-top: 80px; 
+} 
+  
+.h11 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: black;
+}
+  
+.pp {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: black;
+}
+
+button {
+    background-color: #ffc107; 
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+button:hover {
+    background-color: #e0a800;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.about-footer {
+    bottom: -3px;
+    background: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.about-footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    padding-top: 0; 
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 10px;
+    overflow: hidden;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease; 
+}
+
+.card:hover {
+    transform: scale(1.05); 
+    cursor: pointer; 
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+
+}
+
+.card h3 {
+    margin: 10px 0;
+}
+
+.card p {
+    color: #333;
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.title1{
+    text-align: center;
+    line-height: 60px;
+    color:#171616;
+    position: relative
+}
+
+.title1::after{
+    content: '';
+    background: #ff523b;
+    width: 180px;
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); 
+}
+
+

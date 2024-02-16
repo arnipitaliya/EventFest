@@ -1,0 +1,104 @@
+.account-page{
+    padding: 50px 0;
+    background: white;
+    height: 604px;
+}
+.form-container{
+    background: wheat;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    text-align: center;
+    padding: 40px 0;
+    margin: auto;
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.form-container span{
+    font-weight: bold;
+    padding: 0 10px;
+    color:#555;
+    cursor: pointer;
+    width: 100px;
+    display: inline-block;
+}
+.form-btn{
+    display: inline-block;
+}
+.form-container form{
+    max-width: 300px;
+    padding: 0 20px;
+    position: absolute;
+    top : 130px;
+    transition: transform 1s;  
+}
+form input{
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    padding: 0 10px;
+    border:1px solid #ccc;
+    
+}
+form input:invalid{
+    animation: shake 0.3s;
+    border-color: red;
+}
+@keyframes shake{
+    25%{ transform: translateX(4px);}
+    50%{ transform: translateX(-4px);}
+    75%{ transform: translateX(4px);}
+}
+form .btn{
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+}
+form .btn:focus{
+    outline: none;
+}
+#LoginForm{
+    left:-300px;
+}
+#frmReg{
+    left:0;
+}
+form a{
+    font-size: 12px;
+    text-decoration: underline;
+    color: black;
+    padding-left: 30px;
+}
+
+#Indicator{
+    width: 100px;
+    border: none;
+    background: #ff523b;
+    height: 3px;
+    margin-top: 8px;
+    transform: translatex(100px);
+    transition: transform 1s;
+}
+
+label.error{
+    color: red;
+    font-weight: bold;
+}
+
+.forgot-password {
+    padding-left: 100px;
+}
+
+.contact-footer {
+    bottom: -19.5px;
+    background: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.contact-footer p {
+    margin: 0;
+    font-size: 14px;
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EventFest - Home of Local Events</title>
+
+    <!-- Mainlogo -->
+    <link rel="shortcut icon" href="AppIcon.ico" type="image/x-icon" />
+    <!--jquery-->
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!--jquery mobile-->
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <!--jquery mobile styles-->
+    <link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.css">
+    <!--jquery validation-->
+    <script src="js/lib/jquery.validate.js"></script>
+    <!--our stuff-->
+    <!-- <script src="js/facade.js"></script> -->
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/events.css">
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/contact.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="Logo.png" width="60px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Events.html">Events</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="Register.html">Account</a></li>
+                    <li><a href="about.html">About</a></li>
+
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+
+    <!---account-page-->
+
+    <div class="account-page">
+        <div class="form-container">
+            <div class="form-btn">
+                <span class="login" onclick="login()">Login</span>
+                <span class="login" onclick="register()">Register</span>
+                <hr id="Indicator">
+            </div>
+            <form id="LoginForm">
+                <input type="text" id="txtEmailId" name="txtEmailId" data-clear-btn="true" placeholder="Enter Email">
+                <span id="txtEmailId-error" class="error-message"></span>
+                <input type="password" id="txtPassword" name="txtPassword" data-clear-btn="true"
+                    placeholder="Enter Password">
+                <span id="txtPassword-error" class="error-message"></span>
+                <button type="button" id="btnLogin" name="btnLogin" data-icon="check" class="ui-btn-active"
+                    onclick="Submit('login')">Login
+                </button>
+                <a href="#" onclick="resetPassword()" class="forgot-password">Forgot Password</a>
+            </form>
+
+            <!----Registration Form-->
+            <form id="frmReg" name="frmReg">
+                <input type="text" id="txtRegEmailId" name="txtRegEmailId" data-clear-btn="true"
+                    placeholder="Enter Email">
+                <input type="password" id="txtRegPassword" name="txtRegPassword" data-clear-btn="true"
+                    placeholder="Enter Password">
+                <input type="password" id="txtRegVerifyPassword" name="txtRegVerifyPassword" data-clear-btn="true"
+                    placeholder="Verify Password">
+                <span id="txtRegVerifyPassword-error" class="error-message"></span>
+                <button onclick="Submit('register')" type="button" id="btnRegister" name="btnRegister" data-icon="check"
+                    class="ui-btn-active">Register
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Developed By EventFest © | All Rights Reserved!</p>
+    </div>
+
+
+    <script>
+        var userData;
+        //Reset password 
+        function resetPassword() {
+            alert("We have sent a reset link to your registered email address.");
+            return false;
+        }
+        var LoginForm = document.getElementById("LoginForm");
+        var frmReg = document.getElementById("frmReg");
+        var Indicator = document.getElementById("Indicator");
+
+        //Register
+        function register() {
+            frmReg.style.transform = "translatex(0px)";
+            LoginForm.style.transform = "translatex(0px)";
+            Indicator.style.transform = "translatex(100px)";
+        }
+
+        //Login
+        function login() {
+            frmReg.style.transform = "translatex(300px)";
+            LoginForm.style.transform = "translatex(300px)";
+            Indicator.style.transform = "translatex(0px)";
+        }
+
+        //Email Validation
+        function validateEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        //Password Validation
+        function validatePassword(password) {
+            return password.length >= 8;
+        }
+
+        //Verify password Validation
+        function validatePasswordMatch(password, verifyPassword) {
+            return password === verifyPassword;
+        }
+        
+        //An Alert 
+        function displayMessage(message) {
+            alert(message);
+        }
+
+        //Submit Button - JS
+        function Submit(action) {
+            var email, password, verifyPassword;
+            
+            if (action === 'login') {
+                email = document.getElementById("txtEmailId").value;
+                password = document.getElementById("txtPassword").value;
+            } else if (action === 'register') {
+                email = document.getElementById("txtRegEmailId").value;
+                password = document.getElementById("txtRegPassword").value;
+                verifyPassword = document.getElementById("txtRegVerifyPassword").value;
+            }
+
+            //Checking if Email Address field is filled or not
+            if (!validateEmail(email)) {
+                displayMessage("Please enter a valid email address.");
+                return;
+            }
+
+            //If password is not 8 characters long then an alert will appear
+            if (!validatePassword(password)) {
+                displayMessage("Password must be at least 8 characters long.");
+                return;
+            }
+
+            if (action === 'register' && !validatePasswordMatch(password, verifyPassword)) {
+                displayMessage("Passwords do not match.");
+                return;
+            }
+
+            // If all validations pass, display a success message
+            if (action === 'login') {
+                userData = localStorage.getItem('userAccount');
+                if (userData) {
+                    // Parse the user data
+                    var user = JSON.parse(userData);
+                    if (email === user.username && password === user.password) {
+                        displayMessage("Login successful!");
+                        window.location.href = "Contact.html";
+                    }
+
+                }
+
+            } else if (action === 'register') {
+                displayMessage("Registration successful!");
+                window.location.href = "Contact.html";
+                var newUser = {
+                    username: email,
+                    password: password,
+
+                };
+                localStorage.setItem('userAccount', JSON.stringify(newUser));
+            }
+            window.location.href = "Contact.html";
+        }
+    </script>
+</body>
+
+</html>

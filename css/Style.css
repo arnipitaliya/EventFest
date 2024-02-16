@@ -1,0 +1,400 @@
+/* ---------- General CSS ---------- */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins',sans-serif;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ---------- Navbar styling ---------- */
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    padding: 0 20px;
+}
+.navbar .logo img {
+    height: 60px;
+}
+.navbar nav ul {
+    list-style-type: none;
+    float: right;
+    margin-top: -40px;
+    padding: 0;
+}
+.navbar nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+.navbar nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 0px 20px;
+   
+}
+.navbar nav ul li a:hover,
+.navbar nav ul li a.active {
+    background-color: #f0e68c;
+    color: #333;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* ---------- Offer ----------*/
+
+.offer{
+    background: radial-gradient(#4e65ff,#92effd);
+    margin-top: 80px;
+    padding: 30px 0;
+}
+.col-2{
+    flex-basis: 50%;
+    min-width: 300px;
+}
+.col-2 img{
+    max-width: 100%;
+    padding: 50px;
+}
+.content h1{
+    flex-basis: 50%;
+    min-width: 300px;
+}
+
+.header{
+    background: radial-gradient(#1bffff,#009245);
+}
+.header .row{
+    margin-top: 70px;
+}
+
+/*-------------Slider effect -----------*/
+
+.slider{
+   height:250px;
+   margin:auto;
+   position:relative;
+   width:90%;
+   display:grid;
+   place-items:center;
+   overflow: hidden;
+}   
+.slide-track{
+    display: flex;
+    width: calc(250px*18);
+animation:scroll 40s linear infinite;
+}
+
+@keyframes scroll{
+    0%{
+        transform:translatex(0);
+    }
+    100%{
+        transform:translatex(calc(-250px*9));
+    }
+}
+
+.slide{
+    height:200px;
+   width:250px;
+    display:flex;
+    align-items:center;
+    padding:15px;
+}    
+.slide img{
+    width:100%;
+}
+
+slider ::before,
+slider ::after{
+   background:linear-gradient(to right,rgba(255,255,255,1)0%,
+   rgba(255,255,255,0)100%);
+   content:"";
+   height:100%;
+   position:absolute;
+   width:15%;
+   z-index:2;
+}   
+slider ::before{
+   left:0;
+   top:0;
+}
+slider ::after{
+    right:0;
+    top:0;
+    transform:rotatez(188);
+}
+.col-3{
+    flex-basis: 30%;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+.col-3 img{
+    width: 100%;
+}
+
+/* ---------- Latest Event --------- */
+
+.title{
+    text-align: center;
+    margin: 0 auto 80px;
+    position: relative;
+    line-height: 60px;
+    color:#555;
+}
+.title::after{
+    content: '';
+    background: #ff523b;
+    width: 100px;
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%); 
+}
+h4{
+    color:#555;
+    font-weight: normal;
+}
+
+.rating .fa{
+    color:#ff523b;
+}
+
+.col-2 .offer-img{
+    padding: 50px;
+}
+.col-2 .offer-img:hover{
+    padding: 50px;
+    
+}
+small{
+    color:#555;
+}
+
+/*--------------- Testimonial -----------------*/
+
+.testimonial{
+    padding-top: 100px;
+} 
+.testimonial .col-3{
+    text-align: center;
+    padding: 40px 20px;
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+.testimonial .col-3 img{
+    width: 50px;
+    margin-top: 20px;
+    border-radius: 50%;
+}
+.testimonial .col-3:hover{
+    transform: translateY(-10px);
+    color:solid black;
+    background: #88bb9f;
+    
+}
+.fa.fa-quote-left{
+    font-size: 34px;
+    color:#ff523b;
+}
+.col-3 p{
+    font-size: 12px;
+    margin: 12px;
+    
+}
+h3{
+    font-size: 15px;
+    margin: 12px;
+    color:#777;
+}
+.menu-icon{
+    width: 28px;
+    margin-left: 20px;
+    display: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+.small-img-row{
+    display: flex;
+    justify-content: space-between;
+}
+.small-img-col{
+    flex-basis: 24%;
+    cursor: pointer;
+}
+
+/* ------------- footer Section ---------- */
+
+.footer {
+    background: #333;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin: 10px;
+    min-width: 150px;
+}
+
+.footer-section h4 {
+    color: #aaa;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.footer-section ul,
+.footer-section form {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li,
+.footer-section p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-section ul li a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+.footer-section form input,
+.footer-section form button {
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.footer-section form button {
+    background: #e1e1e1;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.footer-section form button:hover {
+    background: #d1d1d1;
+}
+
+.footer-bottom {
+    background: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Social Links CSS Style */
+.social-links a {
+    display: inline-block;
+    color: #aaa; /* Icon color */
+}
+
+.social-links a:hover {
+    color: #fff; /* Icon color on hover */
+}
+
+.social-links i {
+    margin-right: 8px; /* Space between the icon and text */
+    font-size: 18px; /* Adjust icon size as needed */
+}
+
+i.fab {
+    display: inline-block; /* Make sure icons are not set to display: none */
+    font-size: 24px; /* Adjust size as needed */
+    vertical-align: middle;
+}
+
+.footer-section form {
+    display: flex;
+    justify-content: center; /* Center the form elements */
+    align-items: center;
+    gap: 10px; /* Spacing between form elements */
+}
+
+.footer-section form {
+    display: flex;
+    justify-content: center; /* Center the form elements */
+    align-items: center;
+    gap: 10px; /* Spacing between form elements */
+}
+
+.footer-section form input[type="email"] {
+    padding: 15px;
+    border: none;
+    border-radius: 25px; /* Rounded corners for the input field */
+    width: 60%; /* Responsive width */
+    margin-right: 10px; /* Spacing between input and button */
+}
+
+.footer-section form button {
+    border: none;
+    border-radius: 25px; /* Rounded corners for the button */
+    background-color: #f90; /* A bright color for the button */
+    color: white;
+    cursor: pointer;
+    font-weight: bold; /* Make the button text bold */
+    transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+.footer-section form button:hover {
+    background-color: #e80; /* Slightly darker color on hover */
+}
+
+
+#getLocationBtn {
+    background-color: #f90; 
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+#getLocationBtn:hover {
+    background-color: #e80; 
+}
+
+.footer-section form button,
+#getLocationBtn {
+    padding: 8px 16px; 
+    font-size: 14px; 
+}
+
+.thankyou-popup {
+    display: none;
+    position: fixed; 
+    left: 50%;
+    top: 50%; 
+    transform: translate(-50%, -50%); 
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    text-align: center;
+}
